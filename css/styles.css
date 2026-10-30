@@ -1137,3 +1137,392 @@ select:focus-visible {
         font-size: 11px;
     }
 }
+
+/* =========================================================
+   Responsividade complementar
+   Ajustes para desktop, tablets e celulares
+   ========================================================= */
+
+/* Tablets e notebooks menores */
+@media (max-width: 1024px) {
+    .container {
+        width: 100%;
+        padding: 24px;
+    }
+
+    .summary-grid {
+        gap: 14px;
+    }
+
+    .summary-card {
+        padding: 16px 18px;
+    }
+
+    .filters-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .filter-field:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .filters-section,
+    .charges-section {
+        padding: 20px;
+    }
+
+    #chargesTable {
+        min-width: 820px;
+    }
+}
+
+/* Tablets em modo retrato e celulares grandes */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 16px 28px;
+    }
+
+    .page-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 22px;
+        padding-bottom: 14px;
+    }
+
+    .page-header h1 {
+        font-size: 25px;
+    }
+
+    .summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .summary-card {
+        min-height: 108px;
+        padding: 15px 16px;
+    }
+
+    .summary-value {
+        font-size: clamp(18px, 3vw, 22px);
+    }
+
+    .filters-section,
+    .charges-section {
+        padding: 18px;
+    }
+
+    .filters-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .filter-field:last-child {
+        grid-column: auto;
+    }
+
+    .charges-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .status-filter-options {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .status-filter-option {
+        padding: 12px;
+    }
+
+    .status-option-title {
+        font-size: 13px;
+    }
+
+    .status-option-description {
+        font-size: 11px;
+    }
+
+    .pagination {
+        align-items: flex-start;
+    }
+}
+
+/* Celulares */
+@media (max-width: 640px) {
+    body {
+        font-size: 13px;
+    }
+
+    .container {
+        padding: 16px 12px 24px;
+    }
+
+    .page-header {
+        gap: 8px;
+        margin-bottom: 18px;
+        padding-bottom: 12px;
+    }
+
+    .page-header h1 {
+        font-size: 22px;
+        line-height: 1.25;
+    }
+
+    .page-header p {
+        margin-top: 5px;
+        font-size: 12px;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 18px;
+    }
+
+    .summary-card {
+        min-height: 102px;
+        padding: 14px 17px;
+        border-radius: 12px;
+    }
+
+    .summary-card h2 {
+        margin-bottom: 6px;
+        font-size: 11px;
+    }
+
+    .summary-value {
+        font-size: 21px;
+    }
+
+    .summary-detail {
+        font-size: 11px;
+    }
+
+    .filters-section,
+    .charges-section {
+        padding: 16px 13px;
+        border-radius: 12px;
+    }
+
+    .filters-section {
+        margin-bottom: 16px;
+    }
+
+    .section-header {
+        margin-bottom: 15px;
+    }
+
+    .section-header h2 {
+        font-size: 16px;
+    }
+
+    .filters-grid {
+        grid-template-columns: 1fr;
+        gap: 13px;
+    }
+
+    .filter-field:last-child {
+        grid-column: auto;
+    }
+
+    .filter-field select,
+    .period-filter,
+    .period-filter select {
+        min-height: 44px;
+    }
+
+    .filter-actions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        margin-top: 17px;
+    }
+
+    .filter-actions .btn {
+        width: 100%;
+        min-width: 0;
+        padding-right: 8px;
+        padding-left: 8px;
+        white-space: normal;
+    }
+
+    .status-filter-section {
+        margin-bottom: 18px;
+    }
+
+    .status-filter-options {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .status-filter-option {
+        min-height: 64px;
+        padding: 11px 13px;
+    }
+
+    .status-option-title {
+        font-size: 13px;
+    }
+
+    .status-option-description {
+        font-size: 11px;
+    }
+
+    .charges-toolbar {
+        align-items: stretch;
+        gap: 10px;
+        margin-bottom: 13px;
+    }
+
+    .charges-toolbar .btn {
+        align-self: flex-start;
+    }
+
+    .table-responsive {
+        margin-right: -1px;
+        border-radius: 8px;
+    }
+
+    #chargesTable {
+        min-width: 780px;
+    }
+
+    #chargesTable th,
+    #chargesTable td {
+        padding: 11px 10px;
+    }
+
+    #chargesTable th:first-child,
+    #chargesTable td:first-child {
+        padding-left: 12px;
+    }
+
+    .charge-cell {
+        min-width: 165px;
+    }
+
+    .pagination {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        margin-top: 16px;
+    }
+
+    .page-buttons {
+        width: 100%;
+        gap: 5px;
+    }
+
+    .page-buttons button {
+        width: 32px;
+        height: 32px;
+    }
+
+    .modal {
+        align-items: flex-end;
+        padding: 0;
+    }
+
+    .modal-content {
+        width: 100%;
+        max-height: 92dvh;
+        border-radius: 16px 16px 0 0;
+    }
+
+    .modal-header {
+        padding: 17px;
+    }
+
+    .modal-header h2 {
+        font-size: 17px;
+    }
+
+    .pix-content {
+        padding: 18px 16px 22px;
+    }
+
+    .pix-value {
+        font-size: 24px;
+    }
+
+    .qr-wrap {
+        min-height: 170px;
+        margin: 16px auto;
+    }
+
+    .qr-wrap img {
+        width: 170px;
+    }
+
+    .toast {
+        right: 12px;
+        bottom: 12px;
+        left: 12px;
+        max-width: none;
+        text-align: center;
+    }
+}
+
+/* Celulares estreitos */
+@media (max-width: 380px) {
+    .container {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    .summary-card {
+        padding-right: 14px;
+        padding-left: 15px;
+    }
+
+    .summary-value {
+        font-size: 19px;
+    }
+
+    .filters-section,
+    .charges-section {
+        padding-right: 11px;
+        padding-left: 11px;
+    }
+
+    .filter-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-actions .btn {
+        width: 100%;
+    }
+
+    .period-filter select {
+        padding-right: 22px;
+        padding-left: 8px;
+        font-size: 12px;
+    }
+
+    .page-buttons {
+        gap: 4px;
+    }
+
+    .page-buttons button {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+/* Acessibilidade: respeita preferência por menos movimento */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
