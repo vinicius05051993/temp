@@ -152,23 +152,23 @@ select:focus-visible {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.045);
 }
 
-/* Indicador lateral */
+/* Indicador vertical do card */
 .summary-card::before {
     position: absolute;
     top: 0;
     left: 0;
     width: 3px;
     height: 100%;
-    background: var(--color-primary);
+    background: var(--color-danger);
     content: "";
 }
 
-/* Segundo card: próximo vencimento */
+/* O segundo card representa o próximo vencimento */
 .summary-card:nth-child(2)::before {
     background: #f28c00;
 }
 
-/* Título e indicador circular */
+/* Título com indicador circular */
 .summary-card h2 {
     display: flex;
     align-items: center;
@@ -193,7 +193,6 @@ select:focus-visible {
     background: #f28c00;
 }
 
-/* Valor principal */
 .summary-value {
     margin: 0;
     color: #292929;
@@ -204,31 +203,12 @@ select:focus-visible {
     overflow-wrap: anywhere;
 }
 
-/* Descrição complementar */
 .summary-detail {
     margin: 4px 0 0;
     color: #858585;
     font-size: 11px;
     line-height: 1.4;
     overflow-wrap: anywhere;
-}
-
-/* Responsividade */
-@media (max-width: 640px) {
-    .summary-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
-        margin-bottom: 18px;
-    }
-
-    .summary-card {
-        min-height: 105px;
-        padding: 16px 18px;
-    }
-
-    .summary-value {
-        font-size: 21px;
-    }
 }
 
 /* =========================================================
@@ -902,12 +882,13 @@ select:focus-visible {
     }
 
     .summary-card {
-        padding: 18px;
+        min-height: 105px;
+        padding: 16px 18px;
         border-radius: var(--radius-md);
     }
 
     .summary-value {
-        font-size: 23px;
+        font-size: 21px;
     }
 
     .filters-section,
