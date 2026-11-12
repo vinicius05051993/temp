@@ -387,8 +387,18 @@ function renderUpcoming() {
     const box = $("upcoming");
     box.replaceChildren();
 
+    const today = new Date();
+    const next30Days = new Date();
+
+    next30Days.setDate(today.getDate() + 30);
+    next30Days.setHours(23, 59, 59, 999);
+
     const upcomingEvents = events
-        .filter(event => parseLocal(event.end) >= new Date())
+        .filter(event => {
+            const eventDate = parseLocal(event.start);
+
+            return eventDate >= today && eventDate <= next30Days;
+        })
         .slice()
         .sort((a, b) => a.start.localeCompare(b.start));
 
