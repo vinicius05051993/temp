@@ -552,3 +552,67 @@ h1 {
     overflow-y: auto;
     box-sizing: border-box;
 }
+
+/* ============================================================
+   ASSINATURA DA AGENDA GOOGLE
+   ============================================================ */
+
+.calendar-subscription {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 18px;
+    margin-bottom: 20px;
+    background: #f8f8f8;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+}
+
+.subscription-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.subscription-info strong {
+    font-size: 15px;
+    color: #333;
+}
+
+.subscription-info span {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.subscribe-calendar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 18px;
+    background: #d71920;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.subscribe-calendar:hover {
+    background: #b9141a;
+}
+
+@media (max-width: 700px) {
+    .calendar-subscription {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .subscribe-calendar {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+}
