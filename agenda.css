@@ -616,3 +616,18 @@ h1 {
         text-align: center;
     }
 }
+
+/* Próximos eventos: coluna com altura natural */
+.upcoming-panel {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+    align-self: start;
+}
+
+.upcoming-panel .event-list {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+    overflow-y: visible;
+}
