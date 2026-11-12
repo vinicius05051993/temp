@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Financeiro | Cobranças</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <main class="container">
+        <header class="page-header">
+            <div>
+                <h1>Área financeira</h1>
+            </div>
+        </header>
+
+        <section class="summary-grid" aria-label="Resumo financeiro">
+            <article class="summary-card">
+                <h2>Cobranças vencidas</h2>
+                <p id="overdueMain" class="summary-value">Carregando...</p>
+                <p id="overdueDetail" class="summary-detail"></p>
+            </article>
+
+            <article class="summary-card">
+                <h2>Próximo vencimento</h2>
+                <p id="nextMain" class="summary-value">Carregando...</p>
+                <p id="nextDetail" class="summary-detail"></p>
+            </article>
+        </section>
+
+        <section class="filters-section" aria-label="Filtros de cobranças">
+          <div class="section-header">
+              <h2>Minhas cobranças</h2>
+          </div>
+
+          <div class="status-filter-section">
+            <span class="status-filter-label">Status das cobranças</span>
+
+            <div class="status-filter-options" role="group" aria-label="Filtrar por status">
+                <button
+                    type="button"
+                    class="status-filter-option active"
+                    data-status-filter="pending"
+                    aria-pressed="true">
+                    <span class="status-option-title">Pendentes</span>
+                    <span class="status-option-description">Em aberto</span>
+                </button>
+
+                <button
+                    type="button"
+                    class="status-filter-option"
+                    data-status-filter="paid"
+                    aria-pressed="false">
+                    <span class="status-option-title">Quitadas</span>
+                    <span class="status-option-description">Já pagas</span>
+                </button>
+
+                <button
+                    type="button"
+                    class="status-filter-option"
+                    data-status-filter="all"
+                    aria-pressed="false">
+                    <span class="status-option-title">Todas</span>
+                    <span class="status-option-description">Todos os status</span>
+                </button>
+            </div>
+        </div>
+
+          <div class="filters-grid">
+              <div class="filter-field">
+                  <label for="studentFilter">Aluno</label>
+                  <select id="studentFilter">
+                      <option value="">Todos os alunos</option>
+                  </select>
+              </div>
+
+              <div class="filter-field">
+                  <label for="billNameFilter">Cobrança</label>
+                  <select id="billNameFilter">
+                      <option value="">Todas as cobranças</option>
+                  </select>
+              </div>
+
+              <div class="filter-field">
+                <label for="monthFilter">Período</label>
+
+                <div class="period-filter">
+                    <select id="monthFilter" aria-label="Mês de vencimento">
+                        <option value="">Mês</option>
+                        <option value="1">Janeiro</option>
+                        <option value="2">Fevereiro</option>
+                        <option value="3">Março</option>
+                        <option value="4">Abril</option>
+                        <option value="5">Maio</option>
+                        <option value="6">Junho</option>
+                        <option value="7">Julho</option>
+                        <option value="8">Agosto</option>
+                        <option value="9">Setembro</option>
+                        <option value="10">Outubro</option>
+                        <option value="11">Novembro</option>
+                        <option value="12">Dezembro</option>
+                    </select>
+
+                    <select id="yearFilter" aria-label="Ano de vencimento">
+                        <option value="">Ano</option>
+                    </select>
+                </div>
+            </div>
+
+              <div class="filter-field">
+                  <label for="typeFilter">Tipo de pagamento</label>
+                  <select id="typeFilter">
+                      <option value="">Todos os tipos</option>
+                      <option value="pix">Pix</option>
+                      <option value="boleto">Boleto</option>
+                  </select>
+              </div>
+          </div>
+
+          <div class="filter-actions">
+              <button
+                  id="applyFilters"
+                  class="btn btn-primary"
+                  type="button">
+                  Filtrar
+              </button>
+
+              <button
+                  id="clearFilters"
+                  class="btn btn-outline"
+                  type="button">
+                  Limpar filtros
+              </button>
+          </div>
+      </section>
+
+        <section class="charges-section" aria-label="Lista de cobranças">
+            <div class="charges-toolbar">
+                <p id="resultCount">0 cobranças</p>
+            </div>
+
+            <div class="table-responsive">
+                <table id="chargesTable">
+                    <thead>
+                        <tr>
+                            <th scope="col">Cobrança</th>
+                            <th scope="col">Aluno</th>
+                            <th scope="col">Vencimento</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Pagamento</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="chargesBody"></tbody>
+                </table>
+            </div>
+
+            <div id="emptyState" class="empty-state" hidden>
+                <h3>Nenhuma cobrança encontrada</h3>
+                <p>
+                    Não há cobranças que correspondam aos filtros selecionados.
+                </p>
+            </div>
+
+            <div class="pagination">
+                <p id="pageInfo">Nenhuma cobrança para exibir</p>
+
+                <nav
+                    id="pageButtons"
+                    class="page-buttons"
+                    aria-label="Paginação">
+                </nav>
+            </div>
+        </section>
+    </main>
+
+    <div
+        id="pixModal"
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="pixTitle">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <div>
+                    <h2 id="pixTitle">Pagamento via Pix</h2>
+                    <p id="pixSubtitle"></p>
+                </div>
+
+                <button
+                    id="closeModal"
+                    class="modal-close"
+                    type="button"
+                    aria-label="Fechar">
+                    &times;
+                </button>
+            </div>
+
+            <div class="pix-content">
+                <p class="pix-label">Valor da cobrança</p>
+                <p id="pixValue" class="pix-value"></p>
+
+                <div id="qrWrap" class="qr-wrap"></div>
+
+                <div class="pix-code-section">
+                    <label for="pixCopyCode">Código de pagamento</label>
+
+                    <p id="pixCopyCode" class="pix-code"></p>
+
+                    <button
+                        id="copyPixCode"
+                        class="btn btn-primary"
+                        type="button"
+                        data-code="">
+                        Copiar código Pix
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div
+        id="toast"
+        class="toast"
+        role="status"
+        aria-live="polite">
+    </div>
+
+    <!-- Dados locais para testes.
+         Remova este bloco quando os dados forem fornecidos pelo PHP. -->
+    <script>
+        localStorage.lti_customer_taxvat = '<?= $block->getRequest()->getParam('lti_customer_taxvat') ?>';
+        localStorage.lti_codcli = '<?= $block->getRequest()->getParam('lti_codcli') ?>';
+        localStorage.lti_token = '<?= $block->getRequest()->getParam('lti_token') ?>';
+        
+        window.COBRANCAS_JSON = '<?= $this->getJsonData(
+                $block->getRequest()->getParam('lti_customer_taxvat'),
+                $block->getRequest()->getParam('lti_codcli'),
+                $block->getRequest()->getParam('lti_token')
+        ) ?>'
+    </script>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
