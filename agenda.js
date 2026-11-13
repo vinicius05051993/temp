@@ -254,16 +254,6 @@ function showDetail(event) {
     const actions = $("modal-actions");
     actions.replaceChildren();
 
-    const button = document.createElement("a");
-    button.className = "add-button";
-    button.href = googleUrl(event);
-    button.target = "_blank";
-    button.rel = "noopener noreferrer";
-    button.innerHTML =
-        '<span class="g-icon">G</span> Adicionar à minha Google Agenda';
-
-    actions.appendChild(button);
-
     $("event-modal").classList.add("open");
     $("modal-close").focus();
 
